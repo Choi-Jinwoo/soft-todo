@@ -1,9 +1,11 @@
 import React from "react";
+import TodoForm from "./components/TodoForm";
+import "./styles/reset.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <TodoForm />
     </div>
   );
 }
