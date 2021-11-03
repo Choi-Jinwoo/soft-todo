@@ -1,17 +1,25 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Tray } = require("electron");
 const isDevelopmentMode = require("electron-is-dev");
 const path = require("path");
 
 let mainWindow;
+let tray;
+
+app.dock.hide();
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 680,
+    width: 200,
+    height: 400,
     center: true,
-    resizable: true,
+    resizable: false,
+    movable: false,
+    alwaysOnTop: true,
+    show: false,
+    frame: false,
+    transparent: true,
     webPreferences: {
-      devTools: true,
+      devTools: isDevelopmentMode,
     },
   });
 
@@ -28,16 +36,26 @@ const createWindow = () => {
   mainWindow.setResizable(false);
 };
 
-app.on("ready", createWindow);
+const onTrayClick = (_, bounds) => {
+  const { x, y } = bounds;
+  mainWindow.setBounds({ x: x, y });
+
+  mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
+};
+
+app.whenReady().then(() => {
+  createWindow();
+  tray = new Tray(path.join(__dirname, "icon.png"));
+
+  tray.on("click", onTrayClick);
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (mainWindow === null) {
-    createWindow();
   }
 });
