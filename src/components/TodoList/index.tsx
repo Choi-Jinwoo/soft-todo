@@ -9,17 +9,31 @@ const TodoList = () => {
   const [todoList, setTodoList] = useState<string[]>(["1", "1", "2"]);
 
   const createTodo = (todo: string) => {
-    const newTodoList = [todo, ...todoList];
-    setTodoList(newTodoList);
+    if (todo.trim().length <= 0) return;
+
+    const changedTodoList = [todo, ...todoList];
+    setTodoList(changedTodoList);
   };
 
-  const todoItems = todoList.map((todo) => (
-    <TodoItem key={shortid.generate()} todo={todo} />
+  const makeDeleteTodoHandler = (index: number) => () => {
+    const changedTodoList = [
+      ...todoList.slice(0, index),
+      ...todoList.slice(index + 1, todoList.length),
+    ];
+    setTodoList(changedTodoList);
+  };
+
+  const todoItems = todoList.map((todo, index) => (
+    <TodoItem
+      key={shortid.generate()}
+      todo={todo}
+      deleteTodo={makeDeleteTodoHandler(index)}
+    />
   ));
 
   return (
     <div>
-      <TodoForm />
+      <TodoForm createTodo={createTodo} />
 
       {todoItems.length === 0 ? (
         <p className="todo-list__text--empty">📦 할 일을 모두 해결했어요 :)</p>
