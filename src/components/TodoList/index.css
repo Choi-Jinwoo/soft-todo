@@ -1,0 +1,12 @@
+.todo-list {
+  width: 100%;
+  padding: 0px 4px;
+  box-sizing: border-box;
+}
+
+.todo-list__text--empty {
+  font-size: 12px;
+  color: var(--white);
+  margin: 8px auto;
+  text-align: center;
+}
