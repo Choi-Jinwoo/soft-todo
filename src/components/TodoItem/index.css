@@ -1,0 +1,36 @@
+.todo-item {
+  font-size: 14px;
+  color: var(--white);
+  padding: 12px 4px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item__button--done {
+  display: none;
+  cursor: pointer;
+  border-color: var(--white);
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.todo-item__button--done:hover {
+  background-color: var(--white);
+  background-clip: content-box;
+}
+
+.todo-item:hover > .todo-item__button--done {
+  display: inherit;
+}
