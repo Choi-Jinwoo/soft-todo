@@ -1,18 +1,20 @@
 import { useState } from "react";
 import shortid from "shortid";
+import { fetchTodoList, saveTodoList } from "../../lib/storage/todoStorage";
 import TodoForm from "../TodoForm";
 import TodoItem from "../TodoItem";
 
 import "./index.css";
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState<string[]>(["1", "1", "2"]);
+  const [todoList, setTodoList] = useState<string[]>(fetchTodoList());
 
   const createTodo = (todo: string) => {
     if (todo.trim().length <= 0) return;
 
     const changedTodoList = [todo, ...todoList];
     setTodoList(changedTodoList);
+    saveTodoList(changedTodoList);
   };
 
   const makeDeleteTodoHandler = (index: number) => () => {
@@ -21,6 +23,7 @@ const TodoList = () => {
       ...todoList.slice(index + 1, todoList.length),
     ];
     setTodoList(changedTodoList);
+    saveTodoList(changedTodoList);
   };
 
   const todoItems = todoList.map((todo, index) => (
