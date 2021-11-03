@@ -8,6 +8,7 @@
   font-size: 16px;
   color: var(--white);
   padding: 0px 4px;
+  user-select: none;
 }
 
 .todo-form__input {

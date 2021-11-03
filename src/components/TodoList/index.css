@@ -5,6 +5,7 @@
 }
 
 .todo-list__text--empty {
+  user-select: none;
   font-size: 12px;
   color: var(--white);
   margin: 8px auto;
