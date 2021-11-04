@@ -31,7 +31,10 @@ const createWindow = () => {
     icon: path.join(__dirname, "./icon_512_512.png"),
   });
 
-  mainWindow.setVisibleOnAllWorkspaces(true);
+  mainWindow.setVisibleOnAllWorkspaces(true, {
+    visibleOnFullScreen: true,
+    skipTransformProcessType: true,
+  });
 
   mainWindow.loadURL(
     isDevelopmentMode
@@ -43,22 +46,18 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools({ mode: "detach" });
   }
 
-  mainWindow.setResizable(false);
-
-  mainWindow.on("blur", () => mainWindow.hide());
-
+  // tray settings
   tray = new Tray(path.join(__dirname, "icon_16_16.png"));
 
+  // add events
   tray.on("click", onTrayClick);
+  mainWindow.on("blur", () => mainWindow.hide());
 };
 
-app.whenReady().then(() => {
-  app.dock.hide();
-  createWindow();
+app.dock.hide();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
+app.whenReady().then(() => {
+  createWindow();
 
   const autoLaunch = new AutoLaunch({
     name: "Soft Todo",
@@ -68,6 +67,10 @@ app.whenReady().then(() => {
   autoLaunch.isEnabled().then((isEnabled) => {
     if (!isEnabled) autoLaunch.enable();
   });
+});
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
 
 app.on("window-all-closed", () => {
