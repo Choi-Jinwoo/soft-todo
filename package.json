@@ -1,6 +1,11 @@
 {
   "name": "soft-todo",
   "version": "0.1.0",
+  "author": {
+    "email": "dev.chlwlsdn0828@gmail.com",
+    "name": "Choi jinwoo",
+    "url": "https://github.com/choi-jinwoo"
+  },
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
