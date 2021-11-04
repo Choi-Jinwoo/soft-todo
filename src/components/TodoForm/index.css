@@ -9,6 +9,7 @@
   color: var(--white);
   padding: 0px 4px;
   user-select: none;
+  margin-top: 8px;
 }
 
 .todo-form__input {

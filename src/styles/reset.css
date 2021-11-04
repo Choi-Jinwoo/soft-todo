@@ -1,5 +1,5 @@
 :root {
-  --width: 200px;
+  --width: 240px;
   --bg-color: rgba(30, 30, 30, 0.5);
   --white: #ffffff;
   --gray: #dddddd;
@@ -10,7 +10,7 @@
 
 html {
   background-color: var(--bg-color);
-  width: 200px;
+  width: var(--width);
   box-sizing: border-box;
 }
 

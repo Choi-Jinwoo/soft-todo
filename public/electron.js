@@ -15,7 +15,7 @@ const onTrayClick = (_, bounds) => {
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 200,
+    width: 240,
     height: 400,
     center: true,
     resizable: false,

@@ -35,13 +35,13 @@ const TodoList = () => {
   ));
 
   return (
-    <div>
+    <div className="todo-list">
       <TodoForm createTodo={createTodo} />
 
       {todoItems.length === 0 ? (
         <p className="todo-list__text--empty">📦 할 일을 모두 해결했어요 :)</p>
       ) : (
-        todoItems
+        <ul>{todoItems}</ul>
       )}
     </div>
   );
