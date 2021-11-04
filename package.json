@@ -1,6 +1,7 @@
 {
   "name": "soft-todo",
   "version": "0.1.0",
+  "description": "Todo application based on mac tray",
   "author": {
     "email": "dev.chlwlsdn0828@gmail.com",
     "name": "Choi jinwoo",
@@ -24,6 +25,13 @@
     "shortid": "^2.2.16",
     "typescript": "^4.4.4",
     "web-vitals": "^1.0.1"
+  },
+  "build": {
+    "appId": "com.soft-todo",
+    "productName": "Soft Todo",
+    "mac": {
+      "icon": "public/icon_512_512.png"
+    }
   },
   "scripts": {
     "react-start": "react-scripts start",

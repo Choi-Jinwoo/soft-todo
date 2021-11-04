@@ -26,6 +26,8 @@ const createWindow = () => {
     webPreferences: {
       devTools: isDevelopmentMode,
     },
+    title: "Soft Todo",
+    icon: path.join(__dirname, "./icon_512_512.png"),
   });
 
   mainWindow.loadURL(
@@ -42,7 +44,7 @@ const createWindow = () => {
 
   mainWindow.on("blur", () => mainWindow.hide());
 
-  tray = new Tray(path.join(__dirname, "icon.png"));
+  tray = new Tray(path.join(__dirname, "icon_16_16.png"));
 
   tray.on("click", onTrayClick);
 };
