@@ -1,6 +1,12 @@
 {
   "name": "soft-todo",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Todo application based on mac tray",
+  "author": {
+    "email": "dev.chlwlsdn0828@gmail.com",
+    "name": "Choi jinwoo",
+    "url": "https://github.com/choi-jinwoo"
+  },
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
@@ -12,12 +18,21 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "auto-launch": "^5.0.5",
     "electron-is-dev": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "shortid": "^2.2.16",
     "typescript": "^4.4.4",
     "web-vitals": "^1.0.1"
+  },
+  "build": {
+    "appId": "com.soft-todo",
+    "productName": "Soft Todo",
+    "mac": {
+      "icon": "public/icon_512_512.png"
+    }
   },
   "scripts": {
     "react-start": "react-scripts start",
@@ -46,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@types/shortid": "^0.0.29",
     "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
     "electron": "^15.3.0",
