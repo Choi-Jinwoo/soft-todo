@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/49791336/140241545-57a7518c-fa14-4b33-a0aa-f3e4a2de3e8e.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  **MacOS 메뉴 기반 todo 애플리케이션**
+  
+</div>
 
-## Available Scripts
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+[Sotf.Todo-1.0.0.dmg](https://github.com/Choi-Jinwoo/soft-todo/releases/download/v1.0.0/Soft.Todo-1.0.0.dmg)  
+[Sotf.Todo-1.0.0-mac.zip](https://github.com/Choi-Jinwoo/soft-todo/releases/download/v1.0.0/Soft.Todo-1.0.0-mac.zip)  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> `확인되지 않은 개발자의 Mac 앱 열기` 오류 발생 시 설정을 변경하세요
+> 
+> [Apple support](https://support.apple.com/ko-kr/guide/mac-help/mh40616/mac)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
+ 
+- MacOS 메뉴 기반 할 일 관리
+- MacOS 로그인시 자동 실행
 
-### `yarn test`
+![Nov-04-2021 11-01-57](https://user-images.githubusercontent.com/49791336/140245021-35822c97-c4a7-440b-9033-8a187216afcc.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Issue, Pull request
 
-### `yarn build`
+사용 중 오류 혹은 개선점은 [Issue](https://github.com/Choi-Jinwoo/soft-todo/issues), [Pull request](https://github.com/Choi-Jinwoo/soft-todo/pulls) 를 이용해주세요
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Update
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+현재 auto update 기능이 개발되지 않았습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+새로운 버전 Release 시 해당 Github Repository에서 업데이트해주세요.
