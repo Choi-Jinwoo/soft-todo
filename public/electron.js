@@ -31,6 +31,8 @@ const createWindow = () => {
     icon: path.join(__dirname, "./icon_512_512.png"),
   });
 
+  mainWindow.setVisibleOnAllWorkspaces(true);
+
   mainWindow.loadURL(
     isDevelopmentMode
       ? "http://localhost:3000"
