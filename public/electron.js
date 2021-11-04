@@ -5,7 +5,12 @@ const path = require("path");
 let mainWindow;
 let tray;
 
-app.dock.hide();
+const onTrayClick = (_, bounds) => {
+  const { x, y } = bounds;
+  mainWindow.setBounds({ x: x, y });
+
+  mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
+};
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
@@ -34,20 +39,17 @@ const createWindow = () => {
   }
 
   mainWindow.setResizable(false);
-};
 
-const onTrayClick = (_, bounds) => {
-  const { x, y } = bounds;
-  mainWindow.setBounds({ x: x, y });
+  mainWindow.on("blur", () => mainWindow.hide());
 
-  mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();
-};
-
-app.whenReady().then(() => {
-  createWindow();
   tray = new Tray(path.join(__dirname, "icon.png"));
 
   tray.on("click", onTrayClick);
+};
+
+app.whenReady().then(() => {
+  app.dock.hide();
+  createWindow();
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
