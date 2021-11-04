@@ -1,3 +1,4 @@
+const AutoLaunch = require("auto-launch");
 const { app, BrowserWindow, Tray } = require("electron");
 const isDevelopmentMode = require("electron-is-dev");
 const path = require("path");
@@ -55,6 +56,15 @@ app.whenReady().then(() => {
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+
+  const autoLaunch = new AutoLaunch({
+    name: "Soft Todo",
+    path: app.getPath("exe"),
+  });
+
+  autoLaunch.isEnabled().then((isEnabled) => {
+    if (!isEnabled) autoLaunch.enable();
   });
 });
 
