@@ -10,15 +10,12 @@ import "./index.css";
 const TodoList = () => {
   const [todoList, setTodoList] = useState<Todo[]>(fetchTodoList());
 
-  const createTodo = (todoContent: string) => {
-    if (todoContent.trim().length <= 0) return;
+  const createTodo = (todo: Todo) => {
+    if (todo.content.trim().length <= 0) return;
 
-    const todo = new Todo({
-      content: todoContent,
-      date: null,
-    });
+    const newTodo = new Todo(todo);
 
-    const changedTodoList = [todo, ...todoList];
+    const changedTodoList = [newTodo, ...todoList];
     setTodoList(changedTodoList);
     saveTodoList(changedTodoList);
   };

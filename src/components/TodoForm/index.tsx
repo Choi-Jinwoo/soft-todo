@@ -1,22 +1,28 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from "react";
+import Todo from "../../domain/Todo";
 
 import "./index.css";
 
 type Props = {
-  createTodo: (todo: string) => void;
+  createTodo: (todo: Todo) => void;
 };
 
 const TodoForm = ({ createTodo }: Props) => {
-  const [todo, setTodo] = useState("");
+  const [content, setContent] = useState("");
 
   const onTodoChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTodo(e.target.value);
+    setContent(e.target.value);
   };
 
   const onKeyPress: KeyboardEventHandler = (e) => {
     if (e.key === "Enter") {
-      createTodo(todo);
-      setTodo("");
+      createTodo(
+        new Todo({
+          content,
+          date: null,
+        })
+      );
+      setContent("");
     }
   };
 
@@ -24,7 +30,7 @@ const TodoForm = ({ createTodo }: Props) => {
     <div className="todo-form">
       <h1 className="todo-form__title">새로운 할 일 생성</h1>
       <input
-        value={todo}
+        value={content}
         onChange={onTodoChange}
         onKeyPress={onKeyPress}
         type="text"
