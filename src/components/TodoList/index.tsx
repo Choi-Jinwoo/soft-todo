@@ -1,5 +1,6 @@
 import { useState } from "react";
 import shortid from "shortid";
+import Todo from "../../domain/Todo";
 import { fetchTodoList, saveTodoList } from "../../lib/storage/todoStorage";
 import TodoForm from "../TodoForm";
 import TodoItem from "../TodoItem";
@@ -7,10 +8,15 @@ import TodoItem from "../TodoItem";
 import "./index.css";
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState<string[]>(fetchTodoList());
+  const [todoList, setTodoList] = useState<Todo[]>(fetchTodoList());
 
-  const createTodo = (todo: string) => {
-    if (todo.trim().length <= 0) return;
+  const createTodo = (todoContent: string) => {
+    if (todoContent.trim().length <= 0) return;
+
+    const todo = new Todo({
+      content: todoContent,
+      date: null,
+    });
 
     const changedTodoList = [todo, ...todoList];
     setTodoList(changedTodoList);
