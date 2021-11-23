@@ -1,4 +1,5 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from "react";
+import shortid from "shortid";
 import Todo from "../../domain/Todo";
 
 import "./index.css";
@@ -18,6 +19,7 @@ const QuickTodoGenerationForm = ({ createTodo }: Props) => {
     if (e.key === "Enter") {
       createTodo(
         new Todo({
+          id: shortid.generate(),
           content,
           date: null,
         })
