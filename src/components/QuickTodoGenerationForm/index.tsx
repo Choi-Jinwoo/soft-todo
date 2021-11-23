@@ -8,6 +8,8 @@ type Props = {
   createTodo: (todo: Todo) => void;
 };
 
+const DATE_REGEXP = /, \d{4}-\d{2}-\d{2}$/;
+
 const QuickTodoGenerationForm = ({ createTodo }: Props) => {
   const [content, setContent] = useState("");
 
@@ -17,11 +19,13 @@ const QuickTodoGenerationForm = ({ createTodo }: Props) => {
 
   const onKeyPress: KeyboardEventHandler = (e) => {
     if (e.key === "Enter") {
+      const date = content.match(DATE_REGEXP);
+
       createTodo(
         new Todo({
           id: shortid.generate(),
-          content,
-          date: null,
+          content: content.replace(DATE_REGEXP, ''),
+          date: date && new Date(date[0]),
         })
       );
       setContent("");
