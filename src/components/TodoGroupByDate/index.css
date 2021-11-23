@@ -1,0 +1,15 @@
+.todo-group-by-date {
+  margin-bottom: 16px;
+}
+
+.todo-group-by-date__date {
+  background: var(--border-color);
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--white);
+  padding: 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+}
