@@ -9,7 +9,7 @@ export const DATE_NULL_STR = "DATE_NULL";
 type UseTodoListReturns = [
   GroupedByDateTodoList,
   (todo: Todo) => void,
-  (index: number) => () => void
+  (id: string) => void
 ];
 
 const useTodoList = (): UseTodoListReturns => {
@@ -36,7 +36,10 @@ const useTodoList = (): UseTodoListReturns => {
     saveTodoList(changedTodoList);
   };
 
-  const makeDeleteTodoHandler = (index: number) => () => {
+  const deleteTodo = (id: string) => {
+    const index = todoList.findIndex((todo) => todo.id === id);
+    if (index === -1) return;
+
     const changedTodoList = [
       ...todoList.slice(0, index),
       ...todoList.slice(index + 1, todoList.length),
@@ -45,7 +48,7 @@ const useTodoList = (): UseTodoListReturns => {
     saveTodoList(changedTodoList);
   };
 
-  return [groupedByDateTodoList, createTodo, makeDeleteTodoHandler];
+  return [groupedByDateTodoList, createTodo, deleteTodo];
 };
 
 export default useTodoList;
