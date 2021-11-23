@@ -1,15 +1,20 @@
+import Todo from "../../domain/Todo";
 import "./index.css";
 
 type Props = {
-  todo: string;
-  deleteTodo: () => void;
+  todo: Todo;
+  deleteTodo: (id: string) => void;
 };
 
 const TodoItem = ({ todo, deleteTodo }: Props) => {
+  const onDeleteClick = () => {
+    deleteTodo(todo.id);
+  };
+
   return (
     <li className="todo-item">
-      <span>{todo}</span>
-      <div className="todo-item__button--done" onClick={deleteTodo} />
+      <span>{todo.content}</span>
+      <div className="todo-item__button--done" onClick={onDeleteClick} />
     </li>
   );
 };

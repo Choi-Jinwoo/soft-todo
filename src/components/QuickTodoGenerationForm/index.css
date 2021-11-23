@@ -1,10 +1,10 @@
-.todo-form {
+.quick-todo-generation-form {
   width: 100%;
   box-sizing: border-box;
   padding: 16px 4px;
 }
 
-.todo-form__title {
+.quick-todo-generation-form__title {
   font-size: 16px;
   color: var(--white);
   padding: 0px 4px;
@@ -12,7 +12,7 @@
   margin-top: 8px;
 }
 
-.todo-form__input {
+.quick-todo-generation-form__input {
   font-size: 14px;
   border-radius: 4px;
   background-color: var(--dark-gray);
@@ -23,11 +23,11 @@
   box-sizing: border-box;
 }
 
-.todo-form__input::placeholder {
+.quick-todo-generation-form__input::placeholder {
   color: var(--placeholder-color);
 }
 
-.todo-form__input--create {
+.quick-todo-generation-form__input--create {
   margin-top: 12px;
   width: 100%;
 }

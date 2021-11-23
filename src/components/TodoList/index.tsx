@@ -1,47 +1,31 @@
-import { useState } from "react";
-import shortid from "shortid";
-import { fetchTodoList, saveTodoList } from "../../lib/storage/todoStorage";
-import TodoForm from "../TodoForm";
-import TodoItem from "../TodoItem";
+import QuickTodoGenerationForm from "../QuickTodoGenerationForm";
+import TodoGroupByDate from "../TodoGroupByDate";
 
 import "./index.css";
+import useTodoList, { DATE_NULL_STR } from "./useTodoList";
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState<string[]>(fetchTodoList());
+  const [groupedByDateTodoList, createTodo, deleteTodo] = useTodoList();
 
-  const createTodo = (todo: string) => {
-    if (todo.trim().length <= 0) return;
-
-    const changedTodoList = [todo, ...todoList];
-    setTodoList(changedTodoList);
-    saveTodoList(changedTodoList);
-  };
-
-  const makeDeleteTodoHandler = (index: number) => () => {
-    const changedTodoList = [
-      ...todoList.slice(0, index),
-      ...todoList.slice(index + 1, todoList.length),
-    ];
-    setTodoList(changedTodoList);
-    saveTodoList(changedTodoList);
-  };
-
-  const todoItems = todoList.map((todo, index) => (
-    <TodoItem
-      key={shortid.generate()}
-      todo={todo}
-      deleteTodo={makeDeleteTodoHandler(index)}
-    />
-  ));
+  const groupItems = Object.entries(groupedByDateTodoList)
+    .sort(([a], [b]) => (a > b ? 1 : -1))
+    .map(([key, todoList]) => (
+      <TodoGroupByDate
+        key={key}
+        dateString={key === DATE_NULL_STR ? null : key}
+        todoList={todoList}
+        deleteTodo={deleteTodo}
+      />
+    ));
 
   return (
     <div className="todo-list">
-      <TodoForm createTodo={createTodo} />
+      <QuickTodoGenerationForm createTodo={createTodo} />
 
-      {todoItems.length === 0 ? (
+      {Object.keys(groupedByDateTodoList).length === 0 ? (
         <p className="todo-list__text--empty">📦 할 일을 모두 해결했어요 :)</p>
       ) : (
-        <ul>{todoItems}</ul>
+        <ul>{groupItems}</ul>
       )}
     </div>
   );
