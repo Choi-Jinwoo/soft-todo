@@ -1,0 +1,33 @@
+.quick-todo-generation-form {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 4px;
+}
+
+.quick-todo-generation-form__title {
+  font-size: 16px;
+  color: var(--white);
+  padding: 0px 4px;
+  user-select: none;
+  margin-top: 8px;
+}
+
+.quick-todo-generation-form__input {
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: var(--dark-gray);
+  color: var(--gray);
+  border: none;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.quick-todo-generation-form__input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.quick-todo-generation-form__input--create {
+  margin-top: 12px;
+  width: 100%;
+}
